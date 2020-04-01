@@ -29,15 +29,7 @@ const musicLink=[
 const musicName = ['OFF', "Going Down by Jake Chudnow", "Hypnothis by Kevin Macleod"]
 const BHO = V(27)
 const aupCost=[1,2,Infinity,Infinity]
-let AF=0
-const d=new Date()
-if (d.getMonth()==3&&d.getDate()==1&&!(d.getFullYear()==Number(localStorage.ordinalMarkupAF))) {
-  AF=1
-  console.log("April Fools!")
-  localStorage.setItem("ordinalMarkupAF",d.getFullYear().toString())
-} else {
-  AF=0
-}
+
 reset()
 document.getElementById("music").loop=true
 document.getElementById("music").volume=0.5
@@ -111,7 +103,7 @@ updateFactors()
 load()
 function load() {
   let loadgame = JSON.parse(localStorage.getItem("ordinalMarkupSave"))
-  if (loadgame != null && AF==0) {
+  if (loadgame != null) {
     loadGame(loadgame)
   }
 }
@@ -266,7 +258,7 @@ function loadGame(loadgame) {
 
 
 function save() {
-  if (AF==0) localStorage.setItem("ordinalMarkupSave", JSON.stringify(game))
+  localStorage.setItem("ordinalMarkupSave", JSON.stringify(game))
 }
 
 function exporty() {
